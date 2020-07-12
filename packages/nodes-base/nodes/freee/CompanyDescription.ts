@@ -14,16 +14,23 @@ export const companyOperations = [
         },
         options: [
             {
-                name: 'Get Company',
-                value: 'getCompany',
+                name: '事業所一覧の取得',
+                value: 'getCompanies',
                 description: 'ユーザーが所属する事業所の一覧を取得する',
-            }
+            },
+            {
+                name: '事業所の詳細情報の取得',
+                value: 'getCompany',
+                description: 'ユーザーが所属する事業所の詳細を取得する',
+            },
+            {
+                name: '事業所情報の更新',
+                value: 'updateCompany',
+                description: 'ユーザーが所属する事業所の情報を更新する',
+            },
         ],
-        default: 'getCompany',
-        description: 'The operation to perform',
-    }
 
+        default: 'getCompanies',
+        description: '事業所',
+    },
 ] as INodeProperties[];
-
-
-

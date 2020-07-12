@@ -15,7 +15,7 @@ export class FreeeOAuth2Api implements ICredentialType {
 			displayName: 'Webアプリ認証用URL',
 			name: 'authUrl',
 			type: 'string' as NodePropertyTypes,
-			default: 'https://accounts.secure.freee.co.jp/public_api/authorize?client_id=${クライアントID}&redirect_uri=${コールバックURI}&response_type=code',
+			default: 'https://accounts.secure.freee.co.jp/public_api/authorize',
 			required: true
 		},
 		{

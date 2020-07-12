@@ -87,10 +87,69 @@ export class Freee implements INodeType {
             }
             else if (resource === 'deal') {
                 const operation = this.getNodeParameter('operation', 0) as string;
-                if (operation === 'getAll') {
+                // common parameter
+                const company_id = this.getNodeParameter('company_id', i) as string;
+
+                if (operation === 'getDeals') {
                     method = 'GET';
-                    const company_id = this.getNodeParameter('company_id', i) as string;
                     endpoint = `/api/1/deals?company_id=${company_id}`
+
+                    const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+                    if (additionalFields.partner_id) {
+                        endpoint = endpoint + '&partner_id=' + additionalFields.partner_id as string;
+                    }
+                    if (additionalFields.account_item_id) {
+                        endpoint = endpoint + '&account_item_id=' + additionalFields.account_item_id as string;
+                    }
+                    if (additionalFields.partner_code) {
+                        endpoint = endpoint + '&partner_code=' + additionalFields.partner_code as string;
+                    }
+                    if (additionalFields.status) {
+                        endpoint = endpoint + '&status=' + additionalFields.status as string;
+                    }
+                    if (additionalFields.type) {
+                        endpoint = endpoint + '&type=' + additionalFields.type as string;
+                    }
+                    if (additionalFields.start_issue_date) {
+                        endpoint = endpoint + '&start_issue_date=' + additionalFields.start_issue_date as string;
+                    }
+                    if (additionalFields.end_issue_date) {
+                        endpoint = endpoint + '&end_issue_date=' + additionalFields.end_issue_date as string;
+                    }
+                    if (additionalFields.start_due_date) {
+                        endpoint = endpoint + '&start_due_date=' + additionalFields.start_due_date as string;
+                    }
+                    if (additionalFields.end_due_date) {
+                        endpoint = endpoint + '&end_due_date=' + additionalFields.end_due_date as string;
+                    }
+                    if (additionalFields.start_renew_date) {
+                        endpoint = endpoint + '&start_renew_date=' + additionalFields.start_renew_date as string;
+                    }
+                    if (additionalFields.end_renew_date) {
+                        endpoint = endpoint + '&end_renew_date=' + additionalFields.end_renew_date as string;
+                    }
+                    if (additionalFields.offset) {
+                        endpoint = endpoint + '&offset=' + additionalFields.offset as string;
+                    }
+                    if (additionalFields.limit) {
+                        endpoint = endpoint + '&limit=' + additionalFields.limit as string;
+                    }
+                    if (additionalFields.registered_from) {
+                        endpoint = endpoint + '&registered_from=' + additionalFields.registered_from as string;
+                    }
+                    if (additionalFields.accruals) {
+                        endpoint = endpoint + '&accruals=' + additionalFields.accruals as string;
+                    }
+                }
+                else if (operation === 'getDeal') {
+                    method = 'GET';
+                    const id = this.getNodeParameter('id', i) as string;
+                    endpoint = `/api/1/deals/${id}?company_id=${company_id}`
+
+                    const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+                    if (additionalFields.accruals) {
+                        endpoint = endpoint + '&accruals=' + additionalFields.accruals as string;
+                    }
                 }
             }
 
